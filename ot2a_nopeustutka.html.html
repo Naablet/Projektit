@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Näyttötehtävä 2 a</title>
+    </head>
+
+    <body>
+
+        
+        <h1>Nopeustutka</h1> 
+
+
+        Nopeusrajoitus: <input id="rajoitus"/>
+        <br/>
+        Auton nopeus: <input id="nopeus"/>
+        <br/>
+        <button onclick="tutki()">Tutki</button>
+        <br/>
+        <h2><div id="tulostusAlue"></div></h2>
+
+
+        <script>
+
+      
+            // Luodaan funktio, joka määrittelee toimenpiteet poliisille
+            function tutki()
+            {
+
+                // Esitellään keskeiset muuttujat, jotka tallentavat mm. käyttäjän syötteen
+                let nopeusRajoitus = Number(document.getElementById("rajoitus").value);
+                let autonNopeus = Number(document.getElementById("nopeus").value);
+                var ylinopeus = autonNopeus - nopeusRajoitus; // Lasketaan ylinopeuden määrä myöhempää käyttöä varten
+                var liikennevirhemaksu = 0;
+                //console.log(ylinopeus) // Koodin tarkistusta varten luotu komento
+
+                // Jos ylinopeutta ei ole
+                if (ylinopeus == 0)
+                
+                {
+                    document.getElementById("tulostusAlue").innerHTML = "Toivota hyvää matkaa!";
+                    //alert("Hyvää matkaa!");
+                }
+
+                // Jos ylinopeus on yli 20 km/h
+                else if (ylinopeus > 20)
+                {  
+                    document.getElementById("tulostusAlue").innerHTML = "Kysy tulot ja laske päiväsakko!";
+                    //alert("Toimii");
+                }
+                // Jos ylinopeus on 1-10 km/h välillä JA rikkomus tapahtuu enintään 60 km/h alueella
+                else if  (ylinopeus >= 1 && ylinopeus <= 10 && nopeusRajoitus <= 60)
+                {
+                       liikennevirhemaksu = 100;
+                       document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+                       //alert(liikennevirhemaksu);
+                }
+                // Jos ylinopeus on 11-15 km/h välillä JA rikkomus tapahtuu enintään 60 km/h alueella
+                else if (ylinopeus >= 11 && ylinopeus <= 15 && nopeusRajoitus <= 60)
+                {
+                    liikennevirhemaksu = 170;
+                    document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+                    //alert(liikennevirhemaksu);
+                }
+                // Jos ylinopeus on 16-20 km/h välillä JA rikkomus tapahtuu enintään 60 km/h alueella
+                else if (ylinopeus >= 16 && ylinopeus <= 20 && nopeusRajoitus <= 60)
+                {
+                    liikennevirhemaksu = 200;
+                    document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+                   // alert(liikennevirhemaksu);
+                }
+                // Jos ylinopeus on 1-10 km/h välillä JA rikkomus tapahtuu yli 60 km/h alueella
+                else if (ylinopeus >= 1 && ylinopeus <= 10 && nopeusRajoitus > 60)
+                {
+                    liikennevirhemaksu = 70;
+                    document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+                   // alert(liikennevirhemaksu);
+                }
+                //Jos ylinopeus on 11-15 km/h välillä JA rikkomus tapahtuu yli 60 km/h alueella
+                else if (ylinopeus >= 11 && ylinopeus <= 15 && nopeusRajoitus > 60)
+                {
+                    liikennevirhemaksu = 140;
+                    document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+                    //alert(liikennevirhemaksu);
+                }
+                // Jos ylinopeus on 16-20 km/h välillä JA rikkomus tapahtuu yli 60 km/h alueella
+                else if (ylinopeus >= 16 && ylinopeus <= 20 && nopeusRajoitus > 60)
+                {
+                    liikennevirhemaksu = 170;
+                    document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+                    //alert(liikennevirhemaksu);
+                }
+
+            
+                // Tulostus, jossa tulostuu ohje poliisille
+                //document.getElementById("tulostusAlue").innerHTML = "Märää liikennevirhemaksu " + liikennevirhemaksu + " euroa!";
+
+                
+            }
+
+
+        </script>
+
+    </body>
+</html>
