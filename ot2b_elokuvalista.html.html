@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Näyttötehtävä 2 b</title>
+    </head>
+
+    <body>
+        
+        Katsottu elokuva: <input id="katsottuElokuva"/>
+        <button onclick="lisaa()">Lisää</button>
+        <br/>
+        Hae elokuva: <input id="haeElokuva"/>
+        <button onclick="hae()">Hae</button>
+        <br/>
+        Elokuvien tulostus (aakkosjärjestyksessä): 
+        <br/>
+        <button onclick="tulosta()">Tulosta</button>
+
+        <div id="tulostusAlue"></div>
+
+        <script>
+            // Luodaan array-lista elokuville
+            let elokuvat = [];
+
+            //Hae funktio, jossa haun onnistuminen toteutetaan boolean arvolla (true/false, löytyi/ei löydy)
+            function hae()
+            {
+                // Luodaan vaaditut muuttujat lohkojen ulkopuolelle. 
+                let haettuElokuva = document.getElementById("haeElokuva").value; // Muuttuja joka tallentaa syötetyn arvon
+                let tulostus = ""; // Alustetaan muuttuja, johon sijoitetaan haun tulos
+                let onkoElokuva = false; // Boolean-arvo, joka tarkistaa löytyykö elokuvaa vai ei (true/false)
+
+                // For-toistolause, jossa käydään läpi kaikki Array-listaan syötetyt elokuvat ja katsotaan löytyykö syötetty nimi listalta
+                for (let i = 0; i < elokuvat.length; i++)
+                {
+                    if (haettuElokuva == elokuvat[i])
+                    {
+                    onkoElokuva = true;
+                    }
+                }
+                if (onkoElokuva)
+                {
+                    tulostus = haettuElokuva + " löytyi!";
+                }
+                else 
+                {
+                    tulostus = "Ei löydy!";
+                }
+                
+                document.getElementById("tulostusAlue").innerHTML = tulostus;
+            }
+
+            // Tulostus toiminto, joka tulostaa kaikkien syötettyjen elokuvien nimet aakkosjärjestyksesä
+            function tulosta()
+            {
+                let tulostus = "";
+
+                for (let i = 0; i < elokuvat.length; i++)
+                {
+                    tulostus += "<br/>" + elokuvat[i];
+                   
+                }
+
+                elokuvat.sort(); // Aakkosjärjestyksen toteuttava metodi(?)
+                document.getElementById("tulostusAlue").innerHTML = tulostus;
+                
+            }
+
+            // Lisätään elokuvine nimet listalle
+            function lisaa()
+            {
+               
+
+                let elokuva = document.getElementById("katsottuElokuva").value; // Luodaan muuttuja, johon käyttäjän syöte tallennetaan
+                elokuvat.push(elokuva);
+                //console.log(elokuvat[0]); // Tarkistusta varten luotu komento
+
+            }
+
+        </script>
+
+    </body>
+</html>
